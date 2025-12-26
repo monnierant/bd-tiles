@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/foundryvtt-system-manifest.json",
-  "id": "foundry-vtt-system-ts-template",
-  "title": "foundry-vtt-system-ts-template",
+  "id": "bd-tiles",
+  "title": "bd-tiles",
   "description": "",
   "version": "1.0.0",
   "packs": [],
@@ -10,12 +10,6 @@
     "minimum": "12",
     "verified": "13",
     "maximum": "13"
-  },
-  "documentTypes": {
-    "Actor": {
-      "character": {},
-      "npc": {}
-    }
   },
   "languages": [
     {

@@ -1,4 +1,4 @@
-import { id } from "../system.json";
+import { id } from "../module.json";
 
 export const defaultLenght = {
   talent: 5,

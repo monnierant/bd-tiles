@@ -2,14 +2,14 @@
 
 <form class="actor-sheet {{ cssClass }}" autocomplete="off">
   {{> (partial moduleId "actor/header.hbs") moduleId=moduleId actor=actor}}
-  <section class="mysyst-talents">
+  <section class="bdtiles-talents">
     {{#each actor.system.talents as |talent|}}
-    <div class="mysyst-talent">
+    <div class="bdtiles-talent">
       <input
         type="text"
         name="system.talents.{{ @index }}.name"
         value="{{ talent.name }}"
-        placeholder="{{localize 'MYSYST.Actor.talents'}}"
+        placeholder="{{localize 'BDTILES.Actor.talents'}}"
       />
       <input
         type="number"
@@ -21,7 +21,7 @@
       }}</textarea>
       <button
         type="button"
-        class="mysyst-talent-roll"
+        class="bdtiles-talent-roll"
         data-talent="{{ @index }}"
       >
         <i class="fa-solid fa-dice"></i>

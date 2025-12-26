@@ -9,15 +9,15 @@
   display: none;
 }
 
-.mysyst-vital-modificator {
+.bdtiles-vital-modificator {
   width: 2.5rem !important;
 }
 
-.mysyst-separator {
+.bdtiles-separator {
   width: 0.5rem;
 }
 
-.mysyst-health-update {
+.bdtiles-health-update {
   margin: 0 0.1rem;
 }
 
@@ -34,13 +34,13 @@
     }
   }
 
-  .sheet-header .mysyst-header-section {
+  .sheet-header .bdtiles-header-section {
     @include flex;
     flex-direction: row;
     width: 100%;
   }
 
-  .mysyst-talents {
+  .bdtiles-talents {
     @include flex;
     flex-direction: row;
     width: 100%;
@@ -51,7 +51,7 @@
     background-color: #f0f0f0;
   }
 
-  .mysyst-talent {
+  .bdtiles-talent {
     @include flex;
     flex-direction: column;
     gap: 0.1em;
