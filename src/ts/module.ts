@@ -5,6 +5,19 @@ import BdTiles from "./apps/BdTiles";
 
 import { moduleId } from "./constants";
 
+declare global {
+  interface FlagConfig {
+    TileDocument: {
+      "bd-tiles": {
+        border: {
+          size: string;
+          color: string;
+        };
+      };
+    };
+  }
+}
+
 Hooks.once("init", async function () {
   console.log(`Initializing ${moduleId}`);
 });

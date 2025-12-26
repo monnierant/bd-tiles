@@ -21,17 +21,24 @@ export default class BdTiles {
       )
     );
 
-    // const size = app.document.getFlag(moduleId, "size") ?? 0;
+    const borderFlag = app.document.getFlag(
+      // @ts-expect-error - moduleId is a valid flag namespace
+      moduleId,
+      "border"
+    );
 
     const form = await renderTemplate(
       "modules/bd-tiles/templates/sheets/tiles/config-tab.hbs",
       {
         moduleId: moduleId,
         tabClass: app.tabGroups.sheet == "bdtiles" ? "tab active" : "tab",
-        size: 0,
+        borderFlag: borderFlag ?? { size: "0", color: "#ffffff" },
       }
     );
-
+    html
+      .querySelector(`.form-footer`)
+      ?.querySelector(`.bd-tiles-tab`)
+      ?.remove();
     html.querySelector(`.form-footer`)?.insertAdjacentHTML("beforebegin", form);
   }
 }

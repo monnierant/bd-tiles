@@ -1,5 +1,5 @@
 <div
-  class="{{ tabClass }}"
+  class="{{ tabClass }} bd-tiles-tab"
   data-group="sheet"
   data-tab="bdtiles"
   data-application-part="bdtiles"
@@ -8,7 +8,19 @@
   <div class="form-group">
     <label>Tile Border Size</label>
     <div class="form-fields">
-      <input type="number" name="flags.{{ moduleId }}.size" {{size}} />
+      <input
+        type="number"
+        name="flags.{{ moduleId }}.border.size"
+        value="{{ borderFlag.size }}"
+      />
+    </div>
+    <label>Tile Border Color</label>
+    <div class="form-fields">
+      <input
+        type="color"
+        name="flags.{{ moduleId }}.border.color"
+        value="{{ borderFlag.color }}"
+      />
     </div>
   </div>
 </div>
