@@ -5,14 +5,17 @@ import BdTiles from "./apps/BdTiles";
 
 import { moduleId } from "./constants";
 
+export interface BorderFlag {
+  size: number;
+  color: string;
+  alpha: number;
+}
+
 declare global {
   interface FlagConfig {
     TileDocument: {
       "bd-tiles": {
-        border: {
-          size: string;
-          color: string;
-        };
+        border: BorderFlag;
       };
     };
   }
@@ -24,4 +27,14 @@ Hooks.once("init", async function () {
 
 Hooks.on("renderTileConfig", (app, html, data) => {
   BdTiles._onRenderTileConfig(app, html, data);
+});
+
+Hooks.on("drawTile", (tile) => {
+  BdTiles._onDrawTile(tile);
+});
+
+Hooks.on("updateTile", (tile) => {
+  if (tile.object != null) {
+    BdTiles._onDrawTile(tile.object);
+  }
 });
