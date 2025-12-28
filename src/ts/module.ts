@@ -11,30 +11,39 @@ export interface BorderFlag {
   alpha: number;
 }
 
+export interface LockRatioFlag {
+  lockRatio: boolean;
+  ratio: number;
+}
+
 declare global {
   interface FlagConfig {
     TileDocument: {
       "bd-tiles": {
         border: BorderFlag;
+        ratio: LockRatioFlag;
       };
     };
   }
 }
+
+const bdTiles = new BdTiles();
 
 Hooks.once("init", async function () {
   console.log(`Initializing ${moduleId}`);
 });
 
 Hooks.on("renderTileConfig", (app, html, data) => {
-  BdTiles._onRenderTileConfig(app, html, data);
+  bdTiles._onRenderTileConfig(app, html, data);
 });
 
 Hooks.on("drawTile", (tile) => {
-  BdTiles._onDrawTile(tile);
+  bdTiles._onDrawTile(tile);
 });
 
 Hooks.on("updateTile", (tile) => {
+  bdTiles._onUpdateTile(tile);
   if (tile.object != null) {
-    BdTiles._onDrawTile(tile.object);
+    bdTiles._onDrawTile(tile.object);
   }
 });
