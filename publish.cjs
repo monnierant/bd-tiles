@@ -16,10 +16,10 @@ async function readModuleId(filePath) {
 
 async function updateReleaseVersion(githubUrl, version, authToken) {
   const compatibilityInfo = await readCompatibilityInfo(
-    path.resolve(__dirname, "src", "system.json")
+    path.resolve(__dirname, "src", "module.json")
   );
   const moduleId = await readModuleId(
-    path.resolve(__dirname, "src", "system.json")
+    path.resolve(__dirname, "src", "module.json")
   );
   try {
     const response = await axios.post(
@@ -28,7 +28,7 @@ async function updateReleaseVersion(githubUrl, version, authToken) {
         id: moduleId,
         release: {
           version: version,
-          manifest: `${githubUrl}/releases/download/v${version}/system.json`,
+          manifest: `${githubUrl}/releases/download/v${version}/module.json`,
           notes: `${githubUrl}/releases/tag/${version}`,
           compatibility: {
             minimum: compatibilityInfo.minimum,

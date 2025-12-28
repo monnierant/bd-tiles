@@ -10,7 +10,7 @@ It works thanks to [foundry-vtt-types](https://github.com/League-of-Foundry-Deve
 
 ## Usage
 
-Go to `system.json`and edit the system `id`
+Go to `module.json`and edit the system `id`
 
 Replace all ref to `BDTiles` by your system name
 
@@ -28,4 +28,4 @@ You must create a secret in github action `FVTT_PUBLISH_TOKEN`with the `package 
 
 ### Manual Deploy your system
 
-[Latest Release](https://github.com/<group-user>/<repo>/releases/latest/download/system.json)
+[Latest Release](https://github.com/<group-user>/<repo>/releases/latest/download/module.json)
