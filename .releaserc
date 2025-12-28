@@ -10,7 +10,7 @@
       "prerelease": true
     }
   ],
-  "repositoryUrl": "https://github.com/monnierant/bdTiles",
+  "repositoryUrl": "https://github.com/monnierant/bd-tiles",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/github"
