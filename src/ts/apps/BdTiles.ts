@@ -5,7 +5,7 @@ export default class BdTiles {
   public async _onRenderTileConfig(
     app: TileConfig,
     html: HTMLElement,
-    data: TileConfig.RenderContext
+    data: TileConfig.RenderContext,
   ) {
     if (!data) return;
     //create new tab
@@ -15,32 +15,41 @@ export default class BdTiles {
         "modules/bd-tiles/templates/sheets/tiles/tab-selector.hbs",
         {
           active: app.tabGroups.sheet == "bdtiles" ? "active" : "",
-        }
-      )
+        },
+      ),
     );
 
     const borderFlag = app.document.getFlag(
       // @ts-expect-error - moduleId is a valid flag namespace
       moduleId,
-      "border"
+      "border",
     );
 
     const ratioFlag = app.document.getFlag(
       // @ts-expect-error - moduleId is a valid flag namespace
       moduleId,
-      "ratio"
+      "ratio",
     ) as LockRatioFlag;
 
-    if (!ratioFlag.lockRatio) {
-      ratioFlag.ratio = app.document.width / app.document.height;
-    }
+    if (ratioFlag === undefined) {
+      app.document.setFlag(
+        // @ts-expect-error - moduleId is a valid flag namespace
+        moduleId,
+        "ratio",
+        { lockRatio: false, ratio: app.document.width / app.document.height },
+      );
+    } else {
+      if (!ratioFlag.lockRatio) {
+        ratioFlag.ratio = app.document.width / app.document.height;
+      }
 
-    app.document.setFlag(
-      // @ts-expect-error - moduleId is a valid flag namespace
-      moduleId,
-      "ratio",
-      ratioFlag
-    );
+      app.document.setFlag(
+        // @ts-expect-error - moduleId is a valid flag namespace
+        moduleId,
+        "ratio",
+        ratioFlag,
+      );
+    }
 
     const form = await renderTemplate(
       "modules/bd-tiles/templates/sheets/tiles/config-tab.hbs",
@@ -53,7 +62,7 @@ export default class BdTiles {
           ratio: app.document.width / app.document.height,
         },
         tile: app.document,
-      }
+      },
     );
     html
       .querySelector(`.form-footer`)
@@ -72,7 +81,7 @@ export default class BdTiles {
     const ratioFlag = tile.document.getFlag(
       // @ts-expect-error - moduleId is a valid flag namespace
       moduleId,
-      "ratio"
+      "ratio",
     ) as LockRatioFlag;
 
     ratioFlag.ratio =
@@ -83,7 +92,7 @@ export default class BdTiles {
       // @ts-expect-error - moduleId is a valid flag namespace
       moduleId,
       "ratio",
-      ratioFlag
+      ratioFlag,
     );
 
     if (tile.width >= tile.height) {
@@ -97,7 +106,7 @@ export default class BdTiles {
     const borderFlag = tile.document.getFlag(
       // @ts-expect-error - moduleId is a valid flag namespace
       moduleId,
-      "border"
+      "border",
     ) as BorderFlag | undefined;
 
     if (borderFlag?.size && borderFlag.size > 0) {
@@ -123,7 +132,7 @@ export default class BdTiles {
     const ratioFlag = tile.getFlag(
       // @ts-expect-error - moduleId is a valid flag namespace
       moduleId,
-      "ratio"
+      "ratio",
     ) as LockRatioFlag;
 
     if (!ratioFlag?.lockRatio) return;
